@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --color-bg: #05070f;
+  --color-surface: #0a0d1a;
+  --color-surface-2: #0f1220;
+  --color-border: #1a1f35;
+  --color-text: #e2e8f0;
+  --color-text-muted: #8892a4;
+  --color-text-dim: #4a5568;
+  --color-neon-cyan: #00e5ff;
+  --color-neon-green: #00ff88;
+  --color-neon-red: #ff3366;
+  --color-neon-amber: #ffb547;
+  --color-neon-orange: #ff8c42;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono), monospace;
+  min-height: 100vh;
+}
+
+.container-app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.term-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.term-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.term-card-header::before {
+  content: '● ● ●';
+  font-size: 0.5rem;
+  color: var(--color-text-dim);
+  margin-right: 0.75rem;
+}
+
+.term-card-body { padding: 1rem; }
+
+.caret::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  color: var(--color-neon-orange);
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+input, textarea, select {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-neon-orange);
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
